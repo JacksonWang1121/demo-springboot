@@ -1,0 +1,36 @@
+2022-11-16 15:30:38.037 [main] INFO  com.example.demospringboot.HuToolTests - Starting HuToolTests on LAPTOP-KLKSHFA2 with PID 12780 (started by wangjisen in D:\SoftwareEngineering\workspace_idea\demo-springboot) 
+2022-11-16 15:30:38.043 [main] INFO  com.example.demospringboot.HuToolTests - The following profiles are active: dev 
+2022-11-16 15:30:38.645 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Multiple Spring Data modules found, entering strict repository configuration mode! 
+2022-11-16 15:30:38.648 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Bootstrapping Spring Data Redis repositories in DEFAULT mode. 
+2022-11-16 15:30:38.684 [main] INFO  o.s.d.r.config.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 16ms. Found 0 Redis repository interfaces. 
+2022-11-16 15:30:38.994 [main] INFO  o.s.c.s.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.springframework.ws.config.annotation.DelegatingWsConfiguration' of type [org.springframework.ws.config.annotation.DelegatingWsConfiguration$$EnhancerBySpringCGLIB$$d87fda85] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying) 
+2022-11-16 15:30:39.024 [main] INFO  o.s.w.s.a.server.AnnotationActionEndpointMapping - Supporting [WS-Addressing August 2004, WS-Addressing 1.0] 
+2022-11-16 15:30:40.409 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Initializing ExecutorService 'applicationTaskExecutor' 
+2022-11-16 15:30:40.803 [main] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Initializing ExecutorService 'taskScheduler' 
+2022-11-16 15:30:40.895 [main] INFO  com.example.demospringboot.HuToolTests - Started HuToolTests in 3.283 seconds (JVM running for 4.249) 
+2022-11-16 15:30:40.896 [main] INFO  com.example.demospringboot.runner.LocalCacheRunner - ---------------------------LocalCacheRunner Start--------------------------- 
+2022-11-16 15:30:40.897 [main] INFO  com.example.demospringboot.runner.LocalCacheRunner - >>>>>>>>>>>>>Init SConfig Start<<<<<<<<<<<<< 
+2022-11-16 15:30:40.941 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting... 
+2022-11-16 15:30:41.142 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed. 
+2022-11-16 15:30:41.148 [main] DEBUG c.e.demospringboot.mapper.SConfigMapper.selectAll - ==>  Preparing: select cfg_id, cfg_name, cfg_value, cfg_desc, cfg_type, cfg_sts, param_block, block_value, crt_dt, last_chg_dt from s_config WHERE 1 = 1 and cfg_sts = ? 
+2022-11-16 15:30:41.173 [main] DEBUG c.e.demospringboot.mapper.SConfigMapper.selectAll - ==> Parameters: A(String) 
+2022-11-16 15:30:41.191 [main] DEBUG c.e.demospringboot.mapper.SConfigMapper.selectAll - <==      Total: 2 
+2022-11-16 15:30:41.196 [main] INFO  com.example.demospringboot.runner.LocalCacheRunner - >>>>>>>>>>>>>Init SDictionary Start<<<<<<<<<<<<< 
+2022-11-16 15:30:41.197 [main] DEBUG c.e.d.mapper.SDictionaryMapper.selectAllToDictType - ==>  Preparing: select distinct dict_type, dict_type_desc from s_dictionary WHERE 1 = 1 and dict_sts = ? 
+2022-11-16 15:30:41.197 [main] DEBUG c.e.d.mapper.SDictionaryMapper.selectAllToDictType - ==> Parameters: A(String) 
+2022-11-16 15:30:41.199 [main] DEBUG c.e.d.mapper.SDictionaryMapper.selectAllToDictType - <==      Total: 2 
+2022-11-16 15:30:41.199 [main] DEBUG c.e.d.mapper.SDictionaryMapper.selectAll - ==>  Preparing: select dict_type, dict_code, dict_type_desc, dict_code_desc, dict_parent_type, dict_parent_code, dict_order, dict_sts, last_chg_user, last_chg_dt from s_dictionary WHERE 1 = 1 and dict_type = ? and dict_sts = ? 
+2022-11-16 15:30:41.200 [main] DEBUG c.e.d.mapper.SDictionaryMapper.selectAll - ==> Parameters: BAFFLE_OPEN(String), A(String) 
+2022-11-16 15:30:41.201 [main] DEBUG c.e.d.mapper.SDictionaryMapper.selectAll - <==      Total: 3 
+2022-11-16 15:30:41.201 [main] DEBUG c.e.d.mapper.SDictionaryMapper.selectAll - ==>  Preparing: select dict_type, dict_code, dict_type_desc, dict_code_desc, dict_parent_type, dict_parent_code, dict_order, dict_sts, last_chg_user, last_chg_dt from s_dictionary WHERE 1 = 1 and dict_type = ? and dict_sts = ? 
+2022-11-16 15:30:41.201 [main] DEBUG c.e.d.mapper.SDictionaryMapper.selectAll - ==> Parameters: SCONFIG_TYPE(String), A(String) 
+2022-11-16 15:30:41.202 [main] DEBUG c.e.d.mapper.SDictionaryMapper.selectAll - <==      Total: 2 
+2022-11-16 15:30:41.203 [main] INFO  com.example.demospringboot.runner.LocalCacheRunner - >>>>>>>>>>>>>Init SMessage Start<<<<<<<<<<<<< 
+2022-11-16 15:30:41.203 [main] DEBUG c.e.demospringboot.mapper.SMessageMapper.selectAll - ==>  Preparing: select msg_code, msg_desc, msg_level, msg_type, msg_sts, last_chg_user, last_chg_dt from s_message WHERE 1 = 1 and msg_sts = ? 
+2022-11-16 15:30:41.203 [main] DEBUG c.e.demospringboot.mapper.SMessageMapper.selectAll - ==> Parameters: A(String) 
+2022-11-16 15:30:41.211 [main] DEBUG c.e.demospringboot.mapper.SMessageMapper.selectAll - <==      Total: 2 
+2022-11-16 15:30:41.211 [main] INFO  com.example.demospringboot.runner.LocalCacheRunner - ---------------------------LocalCacheRunner, Take 0.314509s--------------------------- 
+2022-11-16 15:30:41.916 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskScheduler - Shutting down ExecutorService 'taskScheduler' 
+2022-11-16 15:30:41.917 [SpringContextShutdownHook] INFO  o.s.scheduling.concurrent.ThreadPoolTaskExecutor - Shutting down ExecutorService 'applicationTaskExecutor' 
+2022-11-16 15:30:41.931 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated... 
+2022-11-16 15:30:41.942 [SpringContextShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed. 

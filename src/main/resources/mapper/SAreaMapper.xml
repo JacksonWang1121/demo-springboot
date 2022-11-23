@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demospringboot.mapper.SAreaMapper">
+  <resultMap id="BaseResultMap" type="com.example.demospringboot.entity.SArea">
+    <id column="area_code" jdbcType="VARCHAR" property="areaCode" />
+    <result column="area_name" jdbcType="VARCHAR" property="areaName" />
+    <result column="area_parent_code" jdbcType="VARCHAR" property="areaParentCode" />
+    <result column="area_type" jdbcType="VARCHAR" property="areaType" />
+    <result column="area_spell" jdbcType="VARCHAR" property="areaSpell" />
+    <result column="area_sts" jdbcType="VARCHAR" property="areaSts" />
+    <result column="area_shortspell" jdbcType="VARCHAR" property="areaShortspell" />
+    <result column="zip_code" jdbcType="VARCHAR" property="zipCode" />
+    <result column="last_chg_user" jdbcType="VARCHAR" property="lastChgUser" />
+    <result column="last_chg_dt" jdbcType="VARCHAR" property="lastChgDt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    area_code, area_name, area_parent_code, area_type, area_spell, area_sts, area_shortspell, 
+    zip_code, last_chg_user, last_chg_dt
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from s_area
+    where area_code = #{areaCode,jdbcType=VARCHAR}
+  </select>
+  <select id="selectBySArea" parameterType="com.example.demospringboot.entity.SArea" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from s_area
+    where area_code = #{areaCode,jdbcType=VARCHAR}
+    <where >
+        <if test="areaCode!=null and areaCode!=''">
+          area_code = #{areaCode,jdbcType=VARCHAR}
+        </if>
+        <if test="areaName!=null and areaName!=''">
+          and area_name like #{areaName,jdbcType=VARCHAR}
+        </if>
+        <if test="areaParentCode!=null and areaParentCode!=''">
+          and area_parent_code = #{areaParentCode,jdbcType=VARCHAR}
+        </if>
+        <if test="areaType!=null and areaType!=''">
+          and area_type = #{areaType,jdbcType=VARCHAR}
+        </if>
+        <if test="areaSts!=null and areaSts!=''">
+          and area_sts = #{areaSts,jdbcType=VARCHAR}
+        </if>
+    </where>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from s_area
+    where area_code = #{areaCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.demospringboot.entity.SArea">
+    insert into s_area (area_code, area_name, area_parent_code, 
+      area_type, area_spell, area_sts, 
+      area_shortspell, zip_code, last_chg_user, 
+      last_chg_dt)
+    values (#{areaCode,jdbcType=VARCHAR}, #{areaName,jdbcType=VARCHAR}, #{areaParentCode,jdbcType=VARCHAR}, 
+      #{areaType,jdbcType=VARCHAR}, #{areaSpell,jdbcType=VARCHAR}, #{areaSts,jdbcType=VARCHAR}, 
+      #{areaShortspell,jdbcType=VARCHAR}, #{zipCode,jdbcType=VARCHAR}, #{lastChgUser,jdbcType=VARCHAR}, 
+      #{lastChgDt,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demospringboot.entity.SArea">
+    insert into s_area
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="areaCode != null">
+        area_code,
+      </if>
+      <if test="areaName != null">
+        area_name,
+      </if>
+      <if test="areaParentCode != null">
+        area_parent_code,
+      </if>
+      <if test="areaType != null">
+        area_type,
+      </if>
+      <if test="areaSpell != null">
+        area_spell,
+      </if>
+      <if test="areaSts != null">
+        area_sts,
+      </if>
+      <if test="areaShortspell != null">
+        area_shortspell,
+      </if>
+      <if test="zipCode != null">
+        zip_code,
+      </if>
+      <if test="lastChgUser != null">
+        last_chg_user,
+      </if>
+      <if test="lastChgDt != null">
+        last_chg_dt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="areaCode != null">
+        #{areaCode,jdbcType=VARCHAR},
+      </if>
+      <if test="areaName != null">
+        #{areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="areaParentCode != null">
+        #{areaParentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="areaType != null">
+        #{areaType,jdbcType=VARCHAR},
+      </if>
+      <if test="areaSpell != null">
+        #{areaSpell,jdbcType=VARCHAR},
+      </if>
+      <if test="areaSts != null">
+        #{areaSts,jdbcType=VARCHAR},
+      </if>
+      <if test="areaShortspell != null">
+        #{areaShortspell,jdbcType=VARCHAR},
+      </if>
+      <if test="zipCode != null">
+        #{zipCode,jdbcType=VARCHAR},
+      </if>
+      <if test="lastChgUser != null">
+        #{lastChgUser,jdbcType=VARCHAR},
+      </if>
+      <if test="lastChgDt != null">
+        #{lastChgDt,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demospringboot.entity.SArea">
+    update s_area
+    <set>
+      <if test="areaName != null">
+        area_name = #{areaName,jdbcType=VARCHAR},
+      </if>
+      <if test="areaParentCode != null">
+        area_parent_code = #{areaParentCode,jdbcType=VARCHAR},
+      </if>
+      <if test="areaType != null">
+        area_type = #{areaType,jdbcType=VARCHAR},
+      </if>
+      <if test="areaSpell != null">
+        area_spell = #{areaSpell,jdbcType=VARCHAR},
+      </if>
+      <if test="areaSts != null">
+        area_sts = #{areaSts,jdbcType=VARCHAR},
+      </if>
+      <if test="areaShortspell != null">
+        area_shortspell = #{areaShortspell,jdbcType=VARCHAR},
+      </if>
+      <if test="zipCode != null">
+        zip_code = #{zipCode,jdbcType=VARCHAR},
+      </if>
+      <if test="lastChgUser != null">
+        last_chg_user = #{lastChgUser,jdbcType=VARCHAR},
+      </if>
+      <if test="lastChgDt != null">
+        last_chg_dt = #{lastChgDt,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where area_code = #{areaCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demospringboot.entity.SArea">
+    update s_area
+    set area_name = #{areaName,jdbcType=VARCHAR},
+      area_parent_code = #{areaParentCode,jdbcType=VARCHAR},
+      area_type = #{areaType,jdbcType=VARCHAR},
+      area_spell = #{areaSpell,jdbcType=VARCHAR},
+      area_sts = #{areaSts,jdbcType=VARCHAR},
+      area_shortspell = #{areaShortspell,jdbcType=VARCHAR},
+      zip_code = #{zipCode,jdbcType=VARCHAR},
+      last_chg_user = #{lastChgUser,jdbcType=VARCHAR},
+      last_chg_dt = #{lastChgDt,jdbcType=VARCHAR}
+    where area_code = #{areaCode,jdbcType=VARCHAR}
+  </update>
+</mapper>

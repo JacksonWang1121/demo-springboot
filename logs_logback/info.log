@@ -1,0 +1,15 @@
+2022-11-16 15:30:41.148 [main] DEBUG c.e.demospringboot.mapper.SConfigMapper.selectAll - ==>  Preparing: select cfg_id, cfg_name, cfg_value, cfg_desc, cfg_type, cfg_sts, param_block, block_value, crt_dt, last_chg_dt from s_config WHERE 1 = 1 and cfg_sts = ? 
+2022-11-16 15:30:41.173 [main] DEBUG c.e.demospringboot.mapper.SConfigMapper.selectAll - ==> Parameters: A(String) 
+2022-11-16 15:30:41.191 [main] DEBUG c.e.demospringboot.mapper.SConfigMapper.selectAll - <==      Total: 2 
+2022-11-16 15:30:41.197 [main] DEBUG c.e.d.mapper.SDictionaryMapper.selectAllToDictType - ==>  Preparing: select distinct dict_type, dict_type_desc from s_dictionary WHERE 1 = 1 and dict_sts = ? 
+2022-11-16 15:30:41.197 [main] DEBUG c.e.d.mapper.SDictionaryMapper.selectAllToDictType - ==> Parameters: A(String) 
+2022-11-16 15:30:41.199 [main] DEBUG c.e.d.mapper.SDictionaryMapper.selectAllToDictType - <==      Total: 2 
+2022-11-16 15:30:41.199 [main] DEBUG c.e.d.mapper.SDictionaryMapper.selectAll - ==>  Preparing: select dict_type, dict_code, dict_type_desc, dict_code_desc, dict_parent_type, dict_parent_code, dict_order, dict_sts, last_chg_user, last_chg_dt from s_dictionary WHERE 1 = 1 and dict_type = ? and dict_sts = ? 
+2022-11-16 15:30:41.200 [main] DEBUG c.e.d.mapper.SDictionaryMapper.selectAll - ==> Parameters: BAFFLE_OPEN(String), A(String) 
+2022-11-16 15:30:41.201 [main] DEBUG c.e.d.mapper.SDictionaryMapper.selectAll - <==      Total: 3 
+2022-11-16 15:30:41.201 [main] DEBUG c.e.d.mapper.SDictionaryMapper.selectAll - ==>  Preparing: select dict_type, dict_code, dict_type_desc, dict_code_desc, dict_parent_type, dict_parent_code, dict_order, dict_sts, last_chg_user, last_chg_dt from s_dictionary WHERE 1 = 1 and dict_type = ? and dict_sts = ? 
+2022-11-16 15:30:41.201 [main] DEBUG c.e.d.mapper.SDictionaryMapper.selectAll - ==> Parameters: SCONFIG_TYPE(String), A(String) 
+2022-11-16 15:30:41.202 [main] DEBUG c.e.d.mapper.SDictionaryMapper.selectAll - <==      Total: 2 
+2022-11-16 15:30:41.203 [main] DEBUG c.e.demospringboot.mapper.SMessageMapper.selectAll - ==>  Preparing: select msg_code, msg_desc, msg_level, msg_type, msg_sts, last_chg_user, last_chg_dt from s_message WHERE 1 = 1 and msg_sts = ? 
+2022-11-16 15:30:41.203 [main] DEBUG c.e.demospringboot.mapper.SMessageMapper.selectAll - ==> Parameters: A(String) 
+2022-11-16 15:30:41.211 [main] DEBUG c.e.demospringboot.mapper.SMessageMapper.selectAll - <==      Total: 2 

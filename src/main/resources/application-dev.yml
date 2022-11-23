@@ -1,0 +1,10 @@
+# 应用服务 WEB 访问端口  多环境配置，第一行必须是空行或者注释
+server:
+  port: 8070
+
+#spring: # 应用名称
+#  profiles: dev  #命名文档块
+
+# 自定义配置
+demospringboot:
+  multiple-env-conf: dev environment
