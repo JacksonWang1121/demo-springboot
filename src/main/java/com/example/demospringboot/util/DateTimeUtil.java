@@ -45,6 +45,9 @@ public class DateTimeUtil {
 
     public static final String PATTERN_TIME = "HH:mm:ss";
 
+    public static final String REGEX = "[0-9]{4}-[0-9]{2}-[0-9]{2}";
+
+    public static final String REGEX_NEW = "[0-9]{4}[0-9]{2}[0-9]{2}";
 
     public static final DateTimeUtil getInstance() {
         return instance;
@@ -1088,8 +1091,7 @@ public class DateTimeUtil {
      */
     public static String checkDateFormat(String date) {
         if (StringUtils.hasText(date)) {
-            String regex = "[0-9]{4}-[0-9]{2}-[0-9]{2}";
-            Pattern pattern = Pattern.compile(regex);
+            Pattern pattern = Pattern.compile(REGEX);
             Matcher m = pattern.matcher(date);
             boolean dateFlag = m.matches();
             if (!dateFlag) {
@@ -1120,8 +1122,7 @@ public class DateTimeUtil {
             return date;
         }
         if (StringUtils.hasText(date)) {
-            String regex = "[0-9]{4}[0-9]{2}[0-9]{2}";
-            Pattern pattern = Pattern.compile(regex);
+            Pattern pattern = Pattern.compile(REGEX_NEW);
             Matcher m = pattern.matcher(date);
             boolean dateFlag = m.matches();
             if (!dateFlag) {
