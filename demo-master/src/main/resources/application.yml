@@ -1,0 +1,3 @@
+spring:
+  profiles:  #命名文档块
+    active: dev  # 多环境配置

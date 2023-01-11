@@ -1,0 +1,139 @@
+# 应用服务 WEB 访问端口  多环境配置，第一行必须是空行或者注释
+server:
+  port: 8088
+  servlet:
+    context-path: /demo-master
+
+spring:
+  application:
+    name: demo-springboot-master
+  security:
+    user:
+      name: admin  # 登录账号
+      password: admin  # 登录密码
+  mail:
+    host: smtp.qq.com
+    username: xxxx@qq.com
+    password:   # 授权码
+  devtools:
+    add-properties: true
+    livereload:
+      port: 18088
+  datasource: # 数据源
+    driver-class-name: com.mysql.cj.jdbc.Driver  # 数据库驱动
+    url: jdbc:mysql://localhost:3306/db_test?useUnicode=true&characterEncoding=UTF-8&useSSL=false&serverTimezone=UTC  # 数据库连接地址
+    username: root  # 数据库用户名
+    password: 123456  # 数据库密码
+    druid:
+      initial-size: 3  # 初始化连接大小
+      min-idle: 2  # 最小空闲连接数
+      max-active: 20  #最大连接数
+      validation-query: select 1 from s_saler
+      filters: stat
+      test-while-idle: true
+      test-on-borrow: true
+      test-on-return: false
+      max-wait: 30000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 30000
+  redis: # Redis配置
+    database: 0  # Redis数据库索引（默认为0）
+    host: 127.0.0.1  # Redis服务器地址
+    port: 6379  # Redis服务器连接端口
+    password:  # Redis服务器连接密码（默认为空）
+    jedis:
+      pool:
+        max-active: 100  # 连接池最大连接数
+        max-idle: 20  # 连接池中的最大空闲连接
+        min-idle: 5  # 连接池中的最小空闲连接
+    timeout: 1000  # 连接超时时间（毫秒）
+  session: # spring-session使用
+    store-type: redis  # none表示不启用
+    redis:
+      cleanup-cron: 0 1 * * * *
+  thymeleaf:  # 引擎模板配置
+    cache: false  # 关闭缓存
+    mode: HTML  # 去掉htm5严格校验
+    prefix: classpath:/templates/**  # 指定thymeleaf模板路径
+    encoding: UTF-8  #指定字符集编码
+  mvc:
+    static-path-pattern: /static/**  # css,js等静态文件的存放路径
+  banner:
+    charset: UTF-8
+    location: classpath:banner.txt
+  #    image:
+  #      location: classpath:images/xiongmaoshaoxiang.png
+  #      width:
+  #      height:
+  #      margin: 2
+  #      invert: false
+  servlet:
+    multipart:
+      max-file-size: 10MB  # 单个文件上传大小
+      max-request-size: 100MB  # 连续上传文件大小
+  freemarker:
+    check-template-location: false  #
+  boot:
+    admin:
+      context-path: /sba
+    #  metadata-keys-to-sanitize: ".password$", ".*secret$", ".*key$", ".$token$", ".credentials.", ".*vcap_services$"
+    #  probed-endpoints: "health", "env", "metrics", "httptrace:trace", "threaddump:dump", "jolokia", "info", "logfile", "refresh", "flyway", "liquibase", "heapdump", "loggers", "auditevents"
+    #  instance-proxy:
+    #    ignored-headers: "Cookie", "Set-Cookie", "Authorization"
+
+# 自定义配置
+demomaster:
+  multiple-env-conf: dev environment
+  rootpath: "D:\\SoftwareEngineering\\workspace_idea\\demo-springboot"  # 项目根路径
+  fileupload:
+    path: "D:\\SoftwareEngineering\\workspace_idea\\demo-springboot\\backup"  # 文件存储路径
+
+# LOG日志配置，打印SQL
+logging:
+  level:
+    com.example.demo.master.mapper: DEBUG  # 日志级别
+  config: classpath:logback-spring.xml
+
+mybatis:
+  mapper-locations: classpath:mapper/*xml  # 指定Mybatis的Mapper文件
+  type-aliases-package: com.example.demo.master.entity  # 指定Mybatis的实体目录
+  configuration:
+    map-underscore-to-camel-case: true  # 开启驼峰命名法
+
+# Mybatis分页插件
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countsql
+
+# 集成Actuator后台监控
+management:
+  health:
+    mail:
+      enabled: false  # 关闭邮件功能
+    redis:
+      enabled: false  # 关闭Redis监控
+  endpoint:
+    health:
+      show-details: always  # 显示详细信息
+    shutdown:
+      enabled: true  # 关闭应用，会导致应用停止，是个危险的动作，默认没有开启这个配置，需要POST请求
+    logfile:
+      external-file: D:/SoftwareEngineering/workspace_idea/demo-springboot/logs_logback/all.log
+  endpoints:
+    web:
+      exposure:
+      # 使用通配符*，表示匹配所有端点
+        exclude: caches  # 排除的端点
+        include: info,health,beans,env,shutdown,threaddump  # 包含的端点
+      #  include: '*'
+      cors:
+        allowed-origins: https://www.demomaster.com
+        allowed-methods: get,post,delete,put
+      base-path: /demo-master-actuator  # 自定义配置监控路径
+info:
+  actuator:
+    name: demo-springboot-master-dev
+    version: V1.0.1
+    auther: Jason Wang

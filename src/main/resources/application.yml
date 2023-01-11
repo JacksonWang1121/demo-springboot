@@ -1,3 +1,9 @@
+# 应用服务 WEB 访问端口  多环境配置，第一行必须是空行或者注释
+server:
+  port: 8080
+  servlet:
+    context-path: /demo-springboot
+
 spring:
-  profiles:  #命名文档块
-    active: dev  # 多环境配置
+  application:
+    name: demo-springboot

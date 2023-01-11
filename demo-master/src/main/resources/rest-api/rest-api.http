@@ -1,0 +1,34 @@
+#微信公众号订阅通知
+#GET http://localhost:80/applets/sendMsg
+#Accept: application/json
+
+#Mybatis测试，分页查询
+#GET http://localhost:80/mybatis/selectToPageHelper?pageNum=3&pageSize=10
+#Accept: application/json
+
+#文件下载测试
+# 注意：filePath中若使用”\“，则在浏览器地址栏中必须转义成”%5C“
+#GET http://localhost:80/fileupload/download?filePath=/src/main/resources/images/xiongmaoshaoxiang.png&fileName=xmsx.png&inline=true
+#Accept: application/json
+
+# Swagger2测试
+#GET http://localhost:8088/swagger-ui.html
+
+
+# Actuator后台监控
+# 显示详细信息
+#GET http://localhost:8088/actuator/health
+# 显示项目工程配置信息
+#GET http://localhost:8088/actuator/info
+# 显示线程快照，分析线程阻塞、死锁等
+#GET http://localhost:8088/actuator/threaddump
+# 显示Sping容器加载的所有bean
+#GET http://localhost:8088/actuator/beans
+# 关闭应用，仅支持POST请求，否则会405错误
+#POST http://localhost:8088/actuator/shutdown
+# 自定义配置监控路径
+#GET http://localhost:8088/demo-actuator/info
+###
+
+# Admin后台监控
+#GET http://localhost:8088/demo-master/sba

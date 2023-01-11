@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.master.mapper.CommonMapper">
+  <select id="getCurrentValue" parameterType="java.lang.String" resultType="java.lang.String">
+    SELECT currval(#{sequenceName,jdbcType=VARCHAR})
+  </select>
+  <select id="getNextValue" parameterType="java.lang.String" resultType="java.lang.String">
+    SELECT nextval(#{sequenceName,jdbcType=VARCHAR})
+  </select>
+</mapper>

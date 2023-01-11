@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.master.mapper.SConfigMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.master.entity.SConfig">
+    <id column="cfg_id" jdbcType="INTEGER" property="cfgId" />
+    <result column="cfg_name" jdbcType="VARCHAR" property="cfgName" />
+    <result column="cfg_value" jdbcType="VARCHAR" property="cfgValue" />
+    <result column="cfg_desc" jdbcType="VARCHAR" property="cfgDesc" />
+    <result column="cfg_type" jdbcType="VARCHAR" property="cfgType" />
+    <result column="cfg_sts" jdbcType="VARCHAR" property="cfgSts" />
+    <result column="param_block" jdbcType="VARCHAR" property="paramBlock" />
+    <result column="block_value" jdbcType="VARCHAR" property="blockValue" />
+    <result column="crt_dt" jdbcType="VARCHAR" property="crtDt" />
+    <result column="last_chg_dt" jdbcType="VARCHAR" property="lastChgDt" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    cfg_id, cfg_name, cfg_value, cfg_desc, cfg_type, cfg_sts, param_block, block_value, 
+    crt_dt, last_chg_dt
+  </sql>
+  <select id="selectAll" parameterType="map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from s_config
+    <where>
+        1 = 1
+        <if test="cfgSts!=null and cfgSts!=''">
+            and cfg_sts = #{cfgSts,jdbcType=VARCHAR}
+        </if>
+    </where>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from s_config
+    where cfg_id = #{cfgId,jdbcType=INTEGER}
+  </select>
+  <select id="selectByCfgName" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from s_config
+    where cfg_name = #{cfgName,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from s_config
+    where cfg_id = #{cfgId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.master.entity.SConfig">
+    insert into s_config (cfg_id, cfg_name, cfg_value, 
+      cfg_desc, cfg_type, cfg_sts, 
+      param_block, block_value, crt_dt, 
+      last_chg_dt)
+    values (#{cfgId,jdbcType=INTEGER}, #{cfgName,jdbcType=VARCHAR}, #{cfgValue,jdbcType=VARCHAR}, 
+      #{cfgDesc,jdbcType=VARCHAR}, #{cfgType,jdbcType=VARCHAR}, #{cfgSts,jdbcType=VARCHAR}, 
+      #{paramBlock,jdbcType=VARCHAR}, #{blockValue,jdbcType=VARCHAR}, #{crtDt,jdbcType=VARCHAR}, 
+      #{lastChgDt,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.master.entity.SConfig">
+    insert into s_config
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="cfgId != null">
+        cfg_id,
+      </if>
+      <if test="cfgName != null">
+        cfg_name,
+      </if>
+      <if test="cfgValue != null">
+        cfg_value,
+      </if>
+      <if test="cfgDesc != null">
+        cfg_desc,
+      </if>
+      <if test="cfgType != null">
+        cfg_type,
+      </if>
+      <if test="cfgSts != null">
+        cfg_sts,
+      </if>
+      <if test="paramBlock != null">
+        param_block,
+      </if>
+      <if test="blockValue != null">
+        block_value,
+      </if>
+      <if test="crtDt != null">
+        crt_dt,
+      </if>
+      <if test="lastChgDt != null">
+        last_chg_dt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="cfgId != null">
+        #{cfgId,jdbcType=INTEGER},
+      </if>
+      <if test="cfgName != null">
+        #{cfgName,jdbcType=VARCHAR},
+      </if>
+      <if test="cfgValue != null">
+        #{cfgValue,jdbcType=VARCHAR},
+      </if>
+      <if test="cfgDesc != null">
+        #{cfgDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="cfgType != null">
+        #{cfgType,jdbcType=VARCHAR},
+      </if>
+      <if test="cfgSts != null">
+        #{cfgSts,jdbcType=VARCHAR},
+      </if>
+      <if test="paramBlock != null">
+        #{paramBlock,jdbcType=VARCHAR},
+      </if>
+      <if test="blockValue != null">
+        #{blockValue,jdbcType=VARCHAR},
+      </if>
+      <if test="crtDt != null">
+        #{crtDt,jdbcType=VARCHAR},
+      </if>
+      <if test="lastChgDt != null">
+        #{lastChgDt,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.master.entity.SConfig">
+    update s_config
+    <set>
+      <if test="cfgName != null">
+        cfg_name = #{cfgName,jdbcType=VARCHAR},
+      </if>
+      <if test="cfgValue != null">
+        cfg_value = #{cfgValue,jdbcType=VARCHAR},
+      </if>
+      <if test="cfgDesc != null">
+        cfg_desc = #{cfgDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="cfgType != null">
+        cfg_type = #{cfgType,jdbcType=VARCHAR},
+      </if>
+      <if test="cfgSts != null">
+        cfg_sts = #{cfgSts,jdbcType=VARCHAR},
+      </if>
+      <if test="paramBlock != null">
+        param_block = #{paramBlock,jdbcType=VARCHAR},
+      </if>
+      <if test="blockValue != null">
+        block_value = #{blockValue,jdbcType=VARCHAR},
+      </if>
+      <if test="crtDt != null">
+        crt_dt = #{crtDt,jdbcType=VARCHAR},
+      </if>
+      <if test="lastChgDt != null">
+        last_chg_dt = #{lastChgDt,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where cfg_id = #{cfgId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.master.entity.SConfig">
+    update s_config
+    set cfg_name = #{cfgName,jdbcType=VARCHAR},
+      cfg_value = #{cfgValue,jdbcType=VARCHAR},
+      cfg_desc = #{cfgDesc,jdbcType=VARCHAR},
+      cfg_type = #{cfgType,jdbcType=VARCHAR},
+      cfg_sts = #{cfgSts,jdbcType=VARCHAR},
+      param_block = #{paramBlock,jdbcType=VARCHAR},
+      block_value = #{blockValue,jdbcType=VARCHAR},
+      crt_dt = #{crtDt,jdbcType=VARCHAR},
+      last_chg_dt = #{lastChgDt,jdbcType=VARCHAR}
+    where cfg_id = #{cfgId,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.master.mapper.SSalerMapper">
+  <resultMap id="BaseResultMap" type="com.example.demo.master.entity.SSaler">
+    <id column="saler_id" jdbcType="VARCHAR" property="salerId" />
+    <result column="open_id" jdbcType="VARCHAR" property="openId" />
+    <result column="saler_no" jdbcType="VARCHAR" property="salerNo" />
+    <result column="saler_name" jdbcType="VARCHAR" property="salerName" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="saler_tel" jdbcType="VARCHAR" property="salerTel" />
+    <result column="saler_status" jdbcType="VARCHAR" property="salerStatus" />
+    <result column="login_status" jdbcType="VARCHAR" property="loginStatus" />
+    <result column="crt_dt" jdbcType="VARCHAR" property="crtDt" />
+    <result column="last_chg_dt" jdbcType="VARCHAR" property="lastChgDt" />
+    <result column="session_id" jdbcType="VARCHAR" property="sessionId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    saler_id, open_id, saler_no, saler_name, password, saler_tel, saler_status, login_status, crt_dt, last_chg_dt, session_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from s_saler
+    <where>
+      <if test="salerId!=null and salerId!=''">
+        saler_id = #{salerId,jdbcType=VARCHAR}
+      </if>
+      <if test="salerNo!=null and salerNo!=''">
+        and saler_no = #{salerNo,jdbcType=VARCHAR}
+      </if>
+    </where>
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from s_saler
+    where saler_id = #{salerId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.example.demo.master.entity.SSaler">
+    insert into s_saler (saler_id, open_id, saler_no, saler_name, password
+      saler_tel, saler_status, login_status, crt_dt,
+      last_chg_dt, session_id)
+    values (#{salerId,jdbcType=VARCHAR}, #{openId,jdbcType=VARCHAR}, #{salerNo,jdbcType=VARCHAR},
+      #{salerName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR},#{salerTel,jdbcType=VARCHAR},
+      #{salerStatus,jdbcType=VARCHAR}, #{loginStatus,jdbcType=VARCHAR}, #{crtDt,jdbcType=VARCHAR},
+      #{lastChgDt,jdbcType=VARCHAR}, #{sessionId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.example.demo.master.entity.SSaler">
+    insert into s_saler
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="salerId != null">
+        saler_id,
+      </if>
+      <if test="openId != null">
+        open_id,
+      </if>
+      <if test="salerNo != null">
+        saler_no,
+      </if>
+      <if test="salerName != null">
+        saler_name,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="salerTel != null">
+        saler_tel,
+      </if>
+      <if test="salerStatus != null">
+        saler_status,
+      </if>
+      <if test="loginStatus != null">
+        login_status,
+      </if>
+      <if test="crtDt != null">
+        crt_dt,
+      </if>
+      <if test="lastChgDt != null">
+        last_chg_dt,
+      </if>
+      <if test="sessionId != null">
+        session_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="salerId != null">
+        #{salerId,jdbcType=VARCHAR},
+      </if>
+      <if test="openId != null">
+        #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="salerNo != null">
+        #{salerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="salerName != null">
+        #{salerName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="salerTel != null">
+        #{salerTel,jdbcType=VARCHAR},
+      </if>
+      <if test="salerStatus != null">
+        #{salerStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="loginStatus != null">
+        #{loginStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="crtDt != null">
+        #{crtDt,jdbcType=VARCHAR},
+      </if>
+      <if test="lastChgDt != null">
+        #{lastChgDt,jdbcType=VARCHAR},
+      </if>
+      <if test="sessionId != null">
+        #{sessionId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.demo.master.entity.SSaler">
+    update s_saler
+    <set>
+      <if test="openId != null">
+        open_id = #{openId,jdbcType=VARCHAR},
+      </if>
+      <if test="salerNo != null">
+        saler_no = #{salerNo,jdbcType=VARCHAR},
+      </if>
+      <if test="salerName != null">
+        saler_name = #{salerName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        password = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="salerTel != null">
+        saler_tel = #{salerTel,jdbcType=VARCHAR},
+      </if>
+      <if test="salerStatus != null">
+        saler_status = #{salerStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="loginStatus != null">
+        login_status = #{loginStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="crtDt != null">
+        crt_dt = #{crtDt,jdbcType=VARCHAR},
+      </if>
+      <if test="lastChgDt != null">
+        last_chg_dt = #{lastChgDt,jdbcType=VARCHAR},
+      </if>
+      <if test="sessionId != null">
+        session_id = #{sessionId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where saler_id = #{salerId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.demo.master.entity.SSaler">
+    update s_saler
+    set open_id = #{openId,jdbcType=VARCHAR},
+      saler_no = #{salerNo,jdbcType=VARCHAR},
+      saler_name = #{salerName,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      saler_tel = #{salerTel,jdbcType=VARCHAR},
+      saler_status = #{salerStatus,jdbcType=VARCHAR},
+      login_status = #{loginStatus,jdbcType=VARCHAR},
+      crt_dt = #{crtDt,jdbcType=VARCHAR},
+      last_chg_dt = #{lastChgDt,jdbcType=VARCHAR},
+      session_id = #{sessionId,jdbcType=VARCHAR}
+    where saler_id = #{salerId,jdbcType=VARCHAR}
+  </update>
+  <select id="loginOnAuto" parameterType="java.util.Map" resultType="java.lang.Integer">
+    select count(1) from s_saler
+    where saler_no = #{salerNo,jdbcType=VARCHAR}
+      and password = #{password,jdbcType=VARCHAR}
+  </select>
+</mapper>
